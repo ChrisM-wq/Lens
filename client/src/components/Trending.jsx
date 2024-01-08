@@ -54,7 +54,7 @@ const data = [
 const Trending = () => {
   return (
     <>
-    <Box sx={{ px: 30, py: 5, display: 'flex', flexDirection: 'column', gap: 2, borderBottom: '1px solid #f6f6f6' }}>
+    <Box sx={{ px: 40, py: 5, display: 'flex', flexDirection: 'column', gap: 2, borderBottom: '1px solid #f6f6f6' }}>
       <Box sx={{ display: 'flex', gap: 1, alignItems: 'center'}}>
         <TrendingUpRoundedIcon sx={{ border: 'solid 1px', fontSize: '18px', borderRadius: '100%', p: '2px'}} />
         <Typography variant="body" sx={{ fontWeight: 600 }}>Trending on Lens</Typography>
