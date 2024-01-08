@@ -7,6 +7,7 @@ import RandomText from './components/RandomText';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
 import Discover from './components/Discover';
+import Trending from './components/Trending';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -14,7 +15,9 @@ function App() {
     <>
     <Navbar />
     <Header />
+    <Trending />
     <Discover />
+    
     </>
   )
 }
