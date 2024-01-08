@@ -1,5 +1,5 @@
 import { Box, Button, Divider, List, ListItem, Typography } from "@mui/material";
-
+import { useState, useEffect, useRef } from 'react';
 const Discover = () => {
 
   const buttonStyles = {
@@ -11,11 +11,9 @@ const Discover = () => {
     px: 3
   };
 
-
-
   return (
-    <>
-    <Box sx={{ width: '400px', display: 'flex', flexDirection: 'column', gap: 2, p: 4 }}>
+   
+    <Box sx={{ position: '-webkit-sticky', position: 'sticky', top: '80px', width: '400px', display: 'flex', flexDirection: 'column', gap: 2, p: 4, height: '100%' }}>
       <Typography variant="body" sx={{ fontWeight: 600 }}>Discover more of what matters to you</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, flexWrap: 'wrap'}}>
         
@@ -47,7 +45,7 @@ const Discover = () => {
         <Typography variant="caption">Teams</Typography>
       </Box>
     </Box>
-    </>
+
   );
 };
 

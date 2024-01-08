@@ -47,8 +47,8 @@ const theme = createTheme({
         {
           props: { variant: "h4" },
           style: {
-            color: "black",
-            fontWeight: 500,
+            color: black,
+            fontWeight: 400,
             fontSize: "34px",
           },
         },

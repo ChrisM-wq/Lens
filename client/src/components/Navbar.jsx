@@ -9,6 +9,7 @@ import Logo from '../assets/LensLogoBlack.png';
 import { useEffect, useState } from 'react';
 
 
+import Logo2 from '../assets/LensLogoColor.png';
 
 const Navbar = () => {
 
@@ -36,7 +37,7 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{ px: 40, borderBottom: 1, borderColor: 'black.main', backgroundColor: changeBackgroundColor ? "#fff" : 'primary.main', transition: '0.4s ease' }} elevation={0}>
         <Toolbar sx={{  height: '80px', px: '0 !important'}}>
-          <img src={Logo} width={'40px'}/>
+          <img src={changeBackgroundColor ? Logo2 : Logo} width={'40px'}/>
           <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
             Lens
           </Typography>
