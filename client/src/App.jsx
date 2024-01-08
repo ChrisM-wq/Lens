@@ -6,6 +6,7 @@ import Box from '@mui/material/Box';
 import RandomText from './components/RandomText';
 import Navbar from './components/Navbar';
 import Header from './components/Header';
+import Discover from './components/Discover';
 function App() {
   const [count, setCount] = useState(0)
 
@@ -13,7 +14,7 @@ function App() {
     <>
     <Navbar />
     <Header />
-
+    <Discover />
     </>
   )
 }

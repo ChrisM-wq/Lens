@@ -6,7 +6,7 @@ let accent2 = "#A5A5A5";
 
 const primaryMain = "#65A4B1"; // "#100E0D" old black
 const primaryHover = "rgba(0, 15, 89, 0.75)"; // "rgba(16, 14, 13, 0.75)" old black
-const secondaryMain = "#FFB806";
+const secondaryMain = '#D04699';
 const secondaryHover = "rgba(255, 184, 6, 0.75)";
 const tertiaryMain = "#0022CC";
 const tertiaryHover = "rgba(1, 34, 204, 0.75";
@@ -105,7 +105,7 @@ const theme = createTheme({
         {
           props: { variant: "body3" },
           style: {
-            color: "black",
+            color: "#8d8d8d",
             fontWeight: 400,
             fontSize: "14px",
           },
@@ -113,9 +113,10 @@ const theme = createTheme({
         {
           props: { variant: "caption" },
           style: {
-            color: "black",
+            fontFamily: 'sans-serif',
+            color: "#8d8d8d",
             fontWeight: 400,
-            fontSize: "12px",
+            fontSize: "14px",
           },
         },
         {
