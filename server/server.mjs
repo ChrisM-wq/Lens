@@ -8,7 +8,7 @@ import { expressMiddleware } from '@apollo/server/express4';
 import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHttpServer';
 
 import resolvers from './schema/resolvers/index.js';
-import typeDefs from './schema/typeDefs.js';
+import typeDefs from './schema/typeDefs/index.js';
 
 import connectDB from './config/db.js';
 
