@@ -14,7 +14,7 @@ const black = "#242021";
 
 const theme = createTheme({
   typography: {
-    fontFamily: ['sans-serif', 'serif']
+    fontFamily: ['serif', 'sans-serif']
   },
   components: {
     MuiTypography: {
@@ -42,6 +42,7 @@ const theme = createTheme({
             color: "black",
             fontWeight: 400,
             fontSize: "48px",
+  
           },
         },
         {
@@ -50,6 +51,7 @@ const theme = createTheme({
             color: black,
             fontWeight: 400,
             fontSize: "34px",
+            fontFamily: 'serif'
           },
         },
         {

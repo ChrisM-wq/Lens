@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography } from "@mui/material";
 import TextEditor from "../components/TextEditor";
 import React, { useState } from "react";
 import parse from 'html-react-parser';
@@ -64,6 +64,13 @@ const CreatePost = () => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', gap: 20, py: 20 }}>
+      <Box>
+        <TextField label={"Title"}  />
+        <TextField label="Caption" id="outlined-basic" variant="outlined"/>
+        <Button variant="pinkBtn">Add Image</Button>
+      </Box>
+      
+
       <Box sx={{ width: '1000px' }}>
         <TextEditor value={value} setValue={setValue} />
       </Box>

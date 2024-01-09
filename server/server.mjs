@@ -33,7 +33,7 @@ app.use(
         origin: 'http://localhost:5173',
         credentials: true,
     }),
-    express.json(),
+    express.json({ limit: '50mb' }),
     expressMiddleware(server, {
         context: async ({ req }) => ({ token: req.headers.authorization }),
     }),

@@ -48,7 +48,10 @@ const Navbar = () => {
           
           
           <Box sx={{ display: 'flex', gap: 4, alignItems: 'center'}}>
-            <Typography variant='body'>Our story</Typography>
+            
+            <Link to={'/articles'} style={{ textDecoration: 'none' }}>
+              <Typography variant='body'>Our story</Typography>
+            </Link>
             <Typography variant='body'>Membership</Typography>
             <Link to={'/write'} style={{ textDecoration: 'none' }}>
               <Typography variant='body'>Write</Typography>
