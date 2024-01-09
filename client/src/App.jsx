@@ -1,28 +1,17 @@
-
+import { Outlet } from 'react-router-dom';
 import './App.css';
-import Box from '@mui/material/Box';
 import Navbar from './components/Navbar';
-import Header from './components/Header';
-import Discover from './components/Discover';
-import Trending from './components/Trending';
-import Articles from './components/Articles';
+import { Box } from '@mui/material';
 
-function App() {
-
- 
-
+const App = () => {
   return (
     <>
-      <Navbar />
-      <Header />
-      <Trending />
-
-      <Box sx={{ display: 'flex', px: 40, gap: 10 }}>
-        <Articles />
-        <Discover />
-      </Box>
+    <Navbar />
+    <Box sx={{ marginTop: '80px'}}>
+      <Outlet />
+    </Box>
     </>
   );
-}
+};
 
 export default App;

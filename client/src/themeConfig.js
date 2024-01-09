@@ -22,7 +22,7 @@ const theme = createTheme({
         {
           props: { variant: "h1" },
           style: {
-            color: "black",
+            color: black,
             fontWeight: 300,
             fontSize: "96px",
             fontFamily: 'serif'
@@ -32,7 +32,7 @@ const theme = createTheme({
           props: { variant: "h2" },
           style: {
             color: "black",
-            fontWeight: 300,
+            fontWeight: 400,
             fontSize: "60px",
           },
         },
@@ -40,7 +40,7 @@ const theme = createTheme({
           props: { variant: "h3" },
           style: {
             color: "black",
-            fontWeight: 700,
+            fontWeight: 400,
             fontSize: "48px",
           },
         },
@@ -156,16 +156,19 @@ const theme = createTheme({
           },
         },
         {
-          props: { variant: "Button2" },
+          props: { variant: "pinkBtn" },
           style: {
             backgroundColor: secondaryMain,
             color: primaryMain,
-            border: "2px solid",
+            borderRadius: '50px',
+            color: "#fff",
+            border: "1px solid",
             borderColor: secondaryMain,
-            borderRadius: "10px 0px",
+            fontFamily: 'sans-serif',
+            textTransform: "none",
+            transition: 'ease 0.4s',
             boxShadow:
               "0px 2px 4px -1px rgba(0,0,0,0.2), 0px 4px 5px 0px rgba(0,0,0,0.14), 0px 1px 10px 0px rgba(0,0,0,0.12)",
-            fontWeight: "bold",
             ":hover": {
               backgroundColor: "white",
               color: secondaryMain,

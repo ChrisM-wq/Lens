@@ -13,7 +13,7 @@ const Discover = () => {
 
   return (
    
-    <Box sx={{ position: '-webkit-sticky', position: 'sticky', top: '80px', width: '400px', display: 'flex', flexDirection: 'column', gap: 2, p: 4, height: '100%' }}>
+    <Box sx={{ position: 'sticky', top: '80px', width: '400px', display: 'flex', flexDirection: 'column', gap: 2, p: 4, height: '100%' }}>
       <Typography variant="body" sx={{ fontWeight: 600 }}>Discover more of what matters to you</Typography>
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, flexWrap: 'wrap'}}>
         

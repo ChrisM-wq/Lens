@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react';
 
 
 import Logo2 from '../assets/LensLogoColor.png';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -37,16 +38,24 @@ const Navbar = () => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed" sx={{ px: 40, borderBottom: 1, borderColor: 'black.main', backgroundColor: changeBackgroundColor ? "#fff" : 'primary.main', transition: '0.4s ease' }} elevation={0}>
         <Toolbar sx={{  height: '80px', px: '0 !important'}}>
-          <img src={changeBackgroundColor ? Logo2 : Logo} width={'40px'}/>
-          <Typography variant="h4" component="div" sx={{ flexGrow: 1 }}>
-            Lens
-          </Typography>
+         
+          <Link to={'/'} component="div" style={{ display: 'flex', flexGrow: 1, textDecoration: 'none' }}>
+            <img src={changeBackgroundColor ? Logo2 : Logo} width={'40px'}/>
+            <Typography variant="h4">
+              Lens
+            </Typography>
+          </Link>
+          
+          
           <Box sx={{ display: 'flex', gap: 4, alignItems: 'center'}}>
             <Typography variant='body'>Our story</Typography>
             <Typography variant='body'>Membership</Typography>
-            <Typography variant='body'>Write</Typography>
+            <Link to={'/write'} style={{ textDecoration: 'none' }}>
+              <Typography variant='body'>Write</Typography>
+            </Link>
+            
             <Typography variant='body'>Sign in</Typography>
-            <Button variant="primary" sx={{ alignSelf: 'start', px: 3}}>Get started</Button>
+            <Button variant={changeBackgroundColor ? "pinkBtn" : "primary"} sx={{ alignSelf: 'start', px: 3}}>Get started</Button>
           </Box>
         </Toolbar>
       </AppBar>

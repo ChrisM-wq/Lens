@@ -4,7 +4,7 @@ import RandomText from "./RandomText";
 const Header = () => {
   return (
     <>
-    <Box sx={{ display: 'flex', minHeight: '455px', justifyContent: 'space-between', py: 1, borderBottom: 1, borderColor: 'black.main', backgroundColor: 'primary.main', marginTop: '80px'}}>
+    <Box sx={{ display: 'flex', minHeight: '455px', justifyContent: 'space-between', py: 1, borderBottom: 1, borderColor: 'black.main', backgroundColor: 'primary.main'}}>
       <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', pl: 40, gap: 5}}>
         <Typography variant="h1">Explore more.</Typography>
         <Typography variant="important">Discover stories, thinking, and expertise <br /> from writers on any topic.</Typography>
