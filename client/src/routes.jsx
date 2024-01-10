@@ -3,6 +3,7 @@ import App from "./App";
 import CreatePost from "./pages/CreatePost";
 import Home from "./pages/Home";
 import ArticlesPage from "./pages/ArticlesPage";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         // New route for displaying a specific article by ID
         path: "article/:articleId", // Use a dynamic parameter ":articleId"
         element: <ArticlesPage />,
+      },{
+        // New route for displaying a specific article by ID
+        path: "profile",
+        element: <Profile />,
       },
     ],
   },

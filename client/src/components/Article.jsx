@@ -15,9 +15,9 @@ const Article = ({article}) => {
   
 
   return (
-    <Box sx={{ display: 'flex', gap: 2}}>
+    <Box sx={{ display: 'flex', gap: 2, justifyContent: 'space-between'}}>
      
-      <Box sx={{display: 'flex', flexDirection: 'column', gap: 2}}>
+      <Box sx={{display: 'flex', flexDirection: 'column', gap: 2, width: '100%'}}>
         <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
           <img src={avatar} width={'20px'}/>
           <Typography variant="body" sx={{ fontSize: '14px'}}>{author}</Typography>
@@ -32,8 +32,8 @@ const Article = ({article}) => {
           <BookmarkAddOutlinedIcon sx={{ fontWeight: 400, fontSize: '18px', color: '#6b6b6b' }} />
         </Box>
       </Box>
-      <Box>
-        <img src={image} width={'200px'} height={'134px'} style={{ borderRadius: '10px'}}/>
+      <Box sx={{ minWidth: '200px', minHeight: '134px', display: 'flex', justifyContent: 'center'}}>
+        <img src={image} style={{ borderRadius: '10px', maxWidth: '200px', maxHeight: '134px'}}/>
       </Box>
     </Box>
   );

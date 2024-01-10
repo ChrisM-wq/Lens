@@ -20,8 +20,22 @@ type ArticleShowcase {
   image: String!
 }
 
+type ArticleTrending {
+  _id: ID!
+  user_id: UserTrending
+  published: DateTime!
+  title: String!
+}
+
+type UserTrending {
+  _id: ID
+  avatar: String
+  username: String
+}
+
 extend type Query {
   getArticles: [ArticleShowcase]
+  getTrendingArticles: [ArticleTrending]
   getArticleById(articleId: ID!): Article
 }
 

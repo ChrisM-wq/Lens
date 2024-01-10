@@ -28,15 +28,14 @@ const ArticlesPage = () => {
 
   const article = data.getArticleById;
   console.log(data);
-  useEffect(() => {
-    // Scroll to the top when the component mounts
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
 
-    // Optionally, you can include a dependency array to ensure the effect runs only once
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo({
+  //     top: 0,
+  //     behavior: 'smooth',
+  //   });
+  // }, []);
+
   return (
     <Box sx={{ width: '100%', display: "flex", justifyContent: 'center', py: 5 }}>
       <Box id="test" sx={{ width: '680px',display: 'flex', flexDirection: 'column', gap: 1 }}>

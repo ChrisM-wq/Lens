@@ -5,6 +5,27 @@ import Avatar from '../assets/person1.png';
 import { Box, Typography } from '@mui/material';
 import TrendingArticle from './TrendingArticle';
 
+
+
+import React from 'react';
+import { useQuery, gql } from '@apollo/client';
+
+const GET_TRENDING_ARTICLES = gql`
+  query Query {
+    getTrendingArticles {
+      _id
+      published
+      title
+      user_id {
+        _id
+        avatar
+        username
+      }
+    }
+  }
+`;
+
+
 const data = [
   {
     avatar: Avatar,
@@ -52,6 +73,14 @@ const data = [
 
 
 const Trending = () => {
+
+  const { loading, error, data } = useQuery(GET_TRENDING_ARTICLES);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const trendingArticles = data.getTrendingArticles;
+  console.log(trendingArticles);
   return (
     <>
     <Box sx={{ px: 40, py: 5, display: 'flex', flexDirection: 'column', gap: 2, borderBottom: '1px solid #f6f6f6' }}>
@@ -64,7 +93,7 @@ const Trending = () => {
     gap: 5,
     gridTemplateColumns: 'repeat(3, 1fr)',
   }}>
-      {data.map((article, index) => (
+      {trendingArticles.map((article, index) => (
         <TrendingArticle article={{index, ...article}} />
       ))}
       </Box>

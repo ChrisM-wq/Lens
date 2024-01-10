@@ -33,6 +33,18 @@ module.exports = {
     },
   Query: {
     getArticles: async () => await Article.find(),
+    getTrendingArticles: async () => {
+      try {
+        const articles = await Article.find({})
+          .sort({ published: -1 }) // Sort in descending order based on publishedAt
+          .limit(6)
+          .populate('user_id', 'username avatar');
+        return articles;
+      } catch (error) {
+        console.error('Error fetching trending articles:', error);
+        throw error;
+      }
+    },
     getArticleById: async (_, { articleId }) => {
       try {
         const article = await Article.findById(articleId);

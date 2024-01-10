@@ -5,6 +5,7 @@ type User {
     email: String,
     password: String,
     token: String
+    avatar: String
 }
 
 input RegisterInput {
@@ -33,6 +34,7 @@ type Query {
 }
 
 type Mutation {
+  updateProfile(avatar: String!): User
   registerUser(registerInput: RegisterInput): User
   loginUser(loginInput: LoginInput): User
   forgotPassword(forgotPasswordInput: ForgotPasswordInput): User

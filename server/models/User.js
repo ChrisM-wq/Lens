@@ -15,6 +15,12 @@ const userSchema = new mongoose.Schema({
   token: {
     type: String
   },
+  avatar: {
+    type: String
+  },
+  // verified: {
+  //   type: String
+  // },
 });
 
 module.exports = mongoose.model('User', userSchema);

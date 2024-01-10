@@ -92,6 +92,24 @@ module.exports = {
             }
 
         },
+        updateProfile: async (_, { avatar } ) => {
+          try {
+            console.log("updating profile")
+            // Assuming you have a User model with findByIdAndUpdate method
+
+            avatar = decodeURIComponent(avatar);
+            const updatedUser = await User.findByIdAndUpdate(
+              '659d392b87daf3d7a90660ba',
+              { $set: { avatar } },
+              { new: true } // Return the updated document
+            );
+    
+            return updatedUser;
+          } catch (error) {
+            console.error('Error updating profile:', error);
+            throw new Error('Unable to update profile');
+          }
+        },
         forgotPassword: async (_, { forgotPasswordInput: { email } } ) => {
 
             const user = await User.findOne({ email: email });
