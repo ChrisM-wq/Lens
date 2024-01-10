@@ -17,8 +17,13 @@ const router = createBrowserRouter([
         path: "write",
         element: <CreatePost />,
       },
+      // {
+      //   path: "articles",
+      //   element: <ArticlesPage />,
+      // },
       {
-        path: "articles",
+        // New route for displaying a specific article by ID
+        path: "article/:articleId", // Use a dynamic parameter ":articleId"
         element: <ArticlesPage />,
       },
     ],

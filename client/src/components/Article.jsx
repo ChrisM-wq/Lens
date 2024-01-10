@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import BookmarkAddOutlinedIcon from '@mui/icons-material/BookmarkAddOutlined';
+import { Link } from "react-router-dom";
 const Article = ({article}) => {
-  const { avatar, author, title, date, length, caption, image} = article;
+  const { _id, avatar, author, title, date, length, caption, image} = article;
   return (
     <Box sx={{ display: 'flex', gap: 2}}>
      
@@ -10,7 +11,9 @@ const Article = ({article}) => {
           <img src={avatar} width={'20px'}/>
           <Typography variant="body" sx={{ fontSize: '14px'}}>{author}</Typography>
         </Box>
+        <Link to={`/article/${_id}`}>
         <Typography variant="body" sx={{ fontWeight: '600'}}>{title}</Typography>
+        </Link>
         <Typography variant="body" sx={{ color: '#6b6b6b'}}>{caption}</Typography>
         <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
           <Typography component={'span'} variant="body" sx={{ fontSize: '14px', color: '#6b6b6b'}}>{date} · {length}</Typography>

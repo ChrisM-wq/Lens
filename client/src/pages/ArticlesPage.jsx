@@ -1,46 +1,43 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import parse from 'html-react-parser';
-const GET_ARTICLES = gql`
-  query {
-    getArticles {
+import { useParams } from "react-router-dom";
+
+const GET_ARTICLE_BY_ID = gql`
+  query GetArticleById($articleId: ID!) {
+    getArticleById(articleId: $articleId) {
       _id
-      user_id
-      published
       title
       caption
       article
+      image
     }
   }
 `;
 
 const ArticlesPage = () => {
-
-  const { loading, error, data } = useQuery(GET_ARTICLES);
+  const { articleId } = useParams();
+  const { loading, error, data } = useQuery(GET_ARTICLE_BY_ID, {
+    variables: { articleId },
+  });
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
-  console.log(data)
-  const articles = data.getArticles;
 
+  const article = data.getArticleById;
+  console.log(data);
   return (
-    <Box>
-      <div>
-      <h2>Article List</h2>
-      <ul>
-        {articles.map((article) => (
-          <li key={article._id}>
-            <h3>{article.title}</h3>
-            <p>{article.caption}</p>
-            <Box id="test" sx={{ width: '800px' }}>
-              {parse(`${article.article}`)}
-            </Box>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Box sx={{ width: '100%', display: "flex", justifyContent: 'center', py: 5 }}>
+      <Box id="test" sx={{ width: '680px',display: 'flex', flexDirection: 'column', gap: 1 }}>
+        <Typography variant="h3">{article.title}</Typography>
+        <Typography>{article.caption}</Typography>
+        <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+          {article.image && (<img src={article.image} alt="Uploaded"  />)}
+        </Box>
+        {parse(`${article.article}`)}
+      </Box>
     </Box>
   );
 };
