@@ -7,10 +7,21 @@ type Article {
   title: String!
   caption: String!
   article: String!
+  image: String!
+}
+
+type ArticleShowcase {
+  _id: ID!
+  user_id: ID!
+  published: String!
+  title: String!
+  caption: String!
+  image: String!
 }
 
 extend type Query {
-  getArticles: [Article]
+  getArticles: [ArticleShowcase]
+  getArticleById(articleId: ID!): Article
 }
 
 extend type Mutation {
@@ -18,6 +29,7 @@ extend type Mutation {
     title: String!
     caption: String!
     article: String!
+    image: String!
   ): Article!
 }`;
 

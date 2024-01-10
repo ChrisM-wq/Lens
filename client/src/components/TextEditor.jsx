@@ -9,8 +9,14 @@ const modules = {
   [{ 'list': 'ordered'}, { 'list': 'bullet' }],
   ['bold', 'italic', 'underline'],
   [{ align: '' }, { align: 'center' }],
-  ['link', 'image']
+  // ['link', 'image']
 ]};
+
+const formats = [
+  'header', 'blockquote', 'code-block',
+  'list', 'bullet', 'bold', 'italic', 'underline',
+  'align',
+];
 
 export default function TextEditor({value, setValue}) {
   return <ReactQuill
@@ -18,6 +24,7 @@ export default function TextEditor({value, setValue}) {
     value={value}
     onChange={setValue}
     modules={modules}
-    style={{ width: '100%'}}
+    formats={formats}
+    style={{ width: '100%' }}
   />;
 }

@@ -56,7 +56,6 @@ const Navbar = () => {
             <Link to={'/write'} style={{ textDecoration: 'none' }}>
               <Typography variant='body'>Write</Typography>
             </Link>
-            
             <Typography variant='body'>Sign in</Typography>
             <Button variant={changeBackgroundColor ? "pinkBtn" : "primary"} sx={{ alignSelf: 'start', px: 3}}>Get started</Button>
           </Box>

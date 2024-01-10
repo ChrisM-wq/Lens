@@ -14,7 +14,6 @@ const Home = () => {
         <Articles />
         <Discover />
       </Box>
-      <TextEditor />
     </>
   );
 };

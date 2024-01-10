@@ -3,12 +3,13 @@ const jwt = require('jsonwebtoken');
 
 module.exports = {
   Mutation : {
-    async createArticle(_, { title, caption, article  }, context) {
+    async createArticle(_, { title, caption, article, image }, context) {
             console.log(title)
             console.log(caption)
             console.log(article)
 
             article = decodeURIComponent(article);
+            image = decodeURIComponent(image);
 
             // const decodedToken = jwt.verify(context.token, process.env.JWT_SECRET);
             // const user_id = decodedToken.user_id;
@@ -18,7 +19,8 @@ module.exports = {
               user_id,
               title,
               caption,
-              article
+              article,
+              image
             });
 
             const res = await newArticle.save();
@@ -31,5 +33,16 @@ module.exports = {
     },
   Query: {
     getArticles: async () => await Article.find(),
+    getArticleById: async (_, { articleId }) => {
+      try {
+        const article = await Article.findById(articleId);
+        if (!article) {
+          throw new Error('Article not found');
+        }
+        return article;
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    },
   },
 };

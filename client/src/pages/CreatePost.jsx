@@ -1,6 +1,6 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, FormLabel, Input, TextField, Typography } from "@mui/material";
 import TextEditor from "../components/TextEditor";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import parse from 'html-react-parser';
 
 import { useMutation } from '@apollo/client';
@@ -11,18 +11,19 @@ const CREATE_ARTICLE = gql`
     $title: String!
     $caption: String!
     $article: String!
+    $image: String!
   ) {
     createArticle(
       title: $title
       caption: $caption
       article: $article
+      image: $image
     ) {
       _id
       user_id
       published
       title
       caption
-      article
     }
   }
 `;
@@ -32,11 +33,42 @@ const CREATE_ARTICLE = gql`
 
 const CreatePost = () => {
 
-  const [formData, setFormData] = useState({
-    title: 'Test',
-    caption: 'Article',
-    article: '',
-  });
+  
+
+  
+
+
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [base64Image, setBase64Image] = useState(null);
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const base64Result = e.target.result;
+        setBase64Image(base64Result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const inputRef = useRef(null);
+
+  const handleButtonClick = () => {
+    inputRef.current.click();
+  };
+
+  const [title, setTitle] = useState('');
+  const [caption, setCaption] = useState('');
+
+  const handleTitleChange = (event) => {
+    setTitle(event.target.value);
+  };
+
+  const handleCaptionChange = (event) => {
+    setCaption(event.target.value);
+  };
 
   const [createArticle] = useMutation(CREATE_ARTICLE);
   const [value, setValue] = useState('');
@@ -46,10 +78,12 @@ const CreatePost = () => {
 
     try {
       const encodedArticle = encodeURIComponent(`${value}`);
+      const encodedImage = encodeURIComponent(`${base64Image}`);
       const data = {
-        title: formData.title,
-        caption: formData.caption,
-        article: encodedArticle
+        title: title,
+        caption: caption,
+        article: encodedArticle,
+        image: encodedImage
       }
       await createArticle({ variables: data });
       console.log('Article created successfully!');
@@ -60,24 +94,53 @@ const CreatePost = () => {
     }
   };
 
-  
-
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', gap: 20, py: 20 }}>
-      <Box>
-        <TextField label={"Title"}  />
-        <TextField label="Caption" id="outlined-basic" variant="outlined"/>
-        <Button variant="pinkBtn">Add Image</Button>
+      <Box sx={{ width: '1000px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 2 }}>
+      <TextField
+        sx={{ width: '100%' }}
+        label="Title"
+        id="outlined-basic"
+        variant="outlined"
+        value={title}
+        onChange={handleTitleChange}
+      />
+
+      <TextField
+        sx={{ width: '100%' }}
+        label="Caption"
+        id="outlined-basic"
+        variant="outlined"
+        value={caption}
+        onChange={handleCaptionChange}
+      />
+        <Input
+          type="file"
+          inputRef={inputRef}
+          style={{ display: 'none' }}
+          onChange={handleFileChange}
+          accept="image/*"
+        />
+        <Button variant="primary" sx={{ px: 10 }} onClick={handleButtonClick}>Upload Image</Button>
+        <TextEditor value={value} setValue={setValue} />
+        <Typography variant="h5" sx={{ alignSelf: 'start'}}>Preview:</Typography>
       </Box>
       
 
-      <Box sx={{ width: '1000px' }}>
-        <TextEditor value={value} setValue={setValue} />
-      </Box>
-      <Box id="test" sx={{ width: '800px' }}>
+      <Box id="test" sx={{ width: '680px',display: 'flex', flexDirection: 'column', gap: 1 }}>
+      
+        {title !== '' && <Typography variant="h3">{title}</Typography>}
+        {caption !== '' && <Typography>{caption}</Typography> }
+        <Box sx={{ display: 'flex', justifyContent: 'center'}}>
+          {base64Image && (<img src={base64Image} alt="Uploaded" style={{ maxWidth: '100%' }} />)}
+        </Box>
+        
+
+
         {parse(`${value}`)}
       </Box>
       <div>
+     
         {value}
       </div>
 

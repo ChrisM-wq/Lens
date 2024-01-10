@@ -40,9 +40,9 @@ const theme = createTheme({
           props: { variant: "h3" },
           style: {
             color: "black",
-            fontWeight: 400,
+            fontWeight: 600,
             fontSize: "48px",
-  
+            
           },
         },
         {

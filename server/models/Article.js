@@ -18,6 +18,9 @@ const articleSchema = new mongoose.Schema({
   article: {
     type: String
   },
+  image: {
+    type: String
+  },
   readtime: {
     type: Number
   },
