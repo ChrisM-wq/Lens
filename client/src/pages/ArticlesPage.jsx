@@ -1,5 +1,5 @@
 import { Box, Typography } from "@mui/material";
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import gql from 'graphql-tag';
 import parse from 'html-react-parser';
@@ -28,6 +28,15 @@ const ArticlesPage = () => {
 
   const article = data.getArticleById;
   console.log(data);
+  useEffect(() => {
+    // Scroll to the top when the component mounts
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    // Optionally, you can include a dependency array to ensure the effect runs only once
+  }, []);
   return (
     <Box sx={{ width: '100%', display: "flex", justifyContent: 'center', py: 5 }}>
       <Box id="test" sx={{ width: '680px',display: 'flex', flexDirection: 'column', gap: 1 }}>

@@ -1,9 +1,10 @@
 const typeDefs = `
+scalar DateTime
 
 type Article {
   _id: ID!
   user_id: ID!
-  published: String!
+  published: DateTime!
   title: String!
   caption: String!
   article: String!
@@ -13,7 +14,7 @@ type Article {
 type ArticleShowcase {
   _id: ID!
   user_id: ID!
-  published: String!
+  published: DateTime!
   title: String!
   caption: String!
   image: String!

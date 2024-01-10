@@ -70,6 +70,8 @@ const GET_ARTICLES = gql`
       title
       published
       user_id
+      image
+      caption
     }
   }
 `;
@@ -91,7 +93,7 @@ const Articles = () => {
 
   return (
     <>
-    <Box sx={{ py: 5, display: 'flex', flexDirection: 'column', gap: 2, borderBottom: '1px solid #f6f6f6' }}>
+    <Box sx={{ py: 5, display: 'flex', flexDirection: 'column', gap: 2, borderBottom: '1px solid #f6f6f6', width: '700px' }}>
       <Box sx={{
         display: 'flex',
         flexDirection: 'column',
