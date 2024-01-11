@@ -27,17 +27,9 @@ const ArticlesPage = () => {
   if (error) return <p>Error: {error.message}</p>;
 
   const article = data.getArticleById;
-  console.log(data);
-
-  // useEffect(() => {
-  //   window.scrollTo({
-  //     top: 0,
-  //     behavior: 'smooth',
-  //   });
-  // }, []);
 
   return (
-    <Box sx={{ width: '100%', display: "flex", justifyContent: 'center', py: 5 }}>
+    <Box sx={{ width: '100%', display: "flex", justifyContent: 'center', py: 5, mt: 10 }}>
       <Box id="test" sx={{ width: '680px',display: 'flex', flexDirection: 'column', gap: 1 }}>
         <Typography variant="h3">{article.title}</Typography>
         <Typography>{article.caption}</Typography>

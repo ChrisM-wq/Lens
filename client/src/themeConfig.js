@@ -122,6 +122,20 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: "topic" },
+          style: {
+            color: "#6b6b6b",
+            fontSize: "14px",
+            fontFamily: 'sans-serif',
+            paddingBottom: '16px',
+            transition: 'ease 0.4s',
+            cursor: 'pointer',
+            '&:hover': {
+              color: black, // Assuming 'black' is a valid color or use '#000' or another valid color value
+            },
+          },
+        },
+        {
           props: { variant: "overline" },
           style: {
             color: "black",

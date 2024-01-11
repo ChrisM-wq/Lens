@@ -4,6 +4,7 @@ import CreatePost from "./pages/CreatePost";
 import Home from "./pages/Home";
 import ArticlesPage from "./pages/ArticlesPage";
 import Profile from "./pages/Profile";
+import HomePage from "./pages/user/HomePage";
 
 const router = createBrowserRouter([
   {
@@ -18,10 +19,10 @@ const router = createBrowserRouter([
         path: "write",
         element: <CreatePost />,
       },
-      // {
-      //   path: "articles",
-      //   element: <ArticlesPage />,
-      // },
+      {
+        path: "home",
+        element: <HomePage />,
+      },
       {
         // New route for displaying a specific article by ID
         path: "article/:articleId", // Use a dynamic parameter ":articleId"
