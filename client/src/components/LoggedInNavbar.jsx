@@ -12,12 +12,31 @@ import SearchIcon from '@mui/icons-material/Search';
 import { Collapse, InputBase } from '@mui/material';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { logout } from '../redux/authReducers';
+import Cookies from 'js-cookie';
+const LoggedInNavbar = () => {
 
-const LoggedInNavbar = ({ setLoggedIn }) => {
-
+  const user = useSelector((state) => state.auth.user);
+  console.log(user)
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
+
+  const dispatch = useDispatch();
+  const handleLogout = async () => {
+    try {
+      // logout function for backend
+      Cookies.remove('authenticated');
+      Cookies.remove('jwt');
+      dispatch(logout());
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -42,7 +61,7 @@ const LoggedInNavbar = ({ setLoggedIn }) => {
       <AppBar sx={{ borderBottom: 1, borderColor: '#f2f2f2', backgroundColor: '#fff', height: '58px', transition: 'linear 0.1s', transform: isVisible ? 'translateY(0)' : 'translateY(-100%)' }} elevation={0}>
         <Toolbar>
           <Box component="div" style={{ display: 'flex', flexGrow: 1, textDecoration: 'none', gap: 5,  }}>
-            <Link to={'/home'}>
+            <Link to={'/'}>
               <img src={Logo} width={'40px'}/>
             </Link>
             <Box sx={{ width: '240px', height: '40px', backgroundColor: '#F9F9F9', borderRadius: '50px', display: 'flex', alignItems: 'center', px: 2, justifyContent: 'center'}}>
@@ -90,7 +109,7 @@ const LoggedInNavbar = ({ setLoggedIn }) => {
               >
               <NotificationsOutlinedIcon sx={{ color: '#6b6b6b' }}/>
             </Link>
-            <Avatar alt="Remy Sharp" src={person} sx={{ width: 32, height: 32 }} onClick={() => setLoggedIn(false)}/>
+            <Avatar alt="Remy Sharp" src={user.avatar} sx={{ width: 32, height: 32 }} onClick={handleLogout}/>
           </Box>
         </Toolbar>
       </AppBar>

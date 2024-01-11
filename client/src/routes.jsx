@@ -1,39 +1,29 @@
-import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import CreatePost from "./pages/CreatePost";
-import Home from "./pages/Home";
-import ArticlesPage from "./pages/ArticlesPage";
-import Profile from "./pages/Profile";
-import HomePage from "./pages/user/HomePage";
+import React from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import App from './App';
+import CreatePost from './pages/CreatePost';
+import Home from './pages/Home';
+import ArticlesPage from './pages/ArticlesPage';
+import Profile from './pages/Profile';
+import { useSelector } from 'react-redux';
+import SignIn from './pages/default/SignIn';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-      },
-      {
-        path: "write",
-        element: <CreatePost />,
-      },
-      {
-        path: "home",
-        element: <HomePage />,
-      },
-      {
-        // New route for displaying a specific article by ID
-        path: "article/:articleId", // Use a dynamic parameter ":articleId"
-        element: <ArticlesPage />,
-      },{
-        // New route for displaying a specific article by ID
-        path: "profile",
-        element: <Profile />,
-      },
-    ],
-  },
-]);
+const RoutesConfig = () => {
 
-export default router;
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+
+  return (
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
+        {isAuthenticated && <Route path="write" element={<CreatePost />} /> }
+        <Route path="article/:articleId" element={<ArticlesPage />} />
+        <Route path="profile" element={<Profile />} />
+        {!isAuthenticated && <Route path="/signin" element={<SignIn to="/" />} />}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Route>
+    </Routes>
+  );
+};
+
+export default RoutesConfig;

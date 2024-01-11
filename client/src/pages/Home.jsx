@@ -4,12 +4,13 @@ import Discover from '../components/Discover';
 import Trending from '../components/Trending';
 import Articles from '../components/Articles';
 import HomePage from './user/HomePage';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-  console.log(loggedIn)
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   return (
     <>
-    {loggedIn ? ( 
+    {!isAuthenticated ? ( 
       <>
         <Header />
         <Trending />

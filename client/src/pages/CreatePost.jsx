@@ -1,4 +1,4 @@
-import { Box, Button, FormLabel, Input, TextField, Typography } from "@mui/material";
+import { Box, Button, Input, TextField, Typography } from "@mui/material";
 import TextEditor from "../components/TextEditor";
 import React, { useRef, useState } from "react";
 import parse from 'html-react-parser';
@@ -32,11 +32,6 @@ const CREATE_ARTICLE = gql`
 
 
 const CreatePost = () => {
-
-  
-
-  
-
 
   const [selectedFile, setSelectedFile] = useState(null);
   const [base64Image, setBase64Image] = useState(null);

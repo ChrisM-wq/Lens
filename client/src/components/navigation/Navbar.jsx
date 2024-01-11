@@ -12,7 +12,10 @@ import Logo from '../../assets/LensLogoBlack.png';
 import LogoColor from '../../assets/LensLogoColor.png';
 
 
-const Navbar = ({ setLoggedIn }) => {
+
+
+
+const Navbar = () => {
 
   const [scrollPosition, setScrollPosition] = useState(0);
   const handleScroll = () => {
@@ -47,7 +50,10 @@ const Navbar = ({ setLoggedIn }) => {
             <Link to={'/write'} style={{ textDecoration: 'none' }}>
               <Typography variant='body'>Write</Typography>
             </Link>
-            <Typography variant='body' onClick={() => setLoggedIn(true)}>Sign in</Typography>
+            <Link to={'/signin'} style={{ textDecoration: 'none' }}>
+            <Typography variant='body' >Sign in</Typography>
+            </Link>
+           
             <Button variant={changeBackgroundColor ? "pinkBtn" : "primary"} sx={{ alignSelf: 'start', px: 3}}>Get started</Button>
           </Box>
         </Toolbar>

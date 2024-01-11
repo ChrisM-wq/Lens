@@ -37,7 +37,7 @@ const HomePage = () => {
       <Box sx={{ margin: '0 24px', px: 40, display: 'flex' }}>
       <Box sx={{ display: 'flex', flexDirection: 'column', width: '728px'}}>
         <TopicSelector isVisible={isVisible} />
-        <Box sx={{ marginTop: isVisible ? '107px' : '50px', transition: 'ease 0.3s', display: 'flex', gap: 10 }}>
+        <Box sx={{ marginTop: isVisible ? '107px' : '50px', transition: 'ease 0.1s', display: 'flex', gap: 10 }}>
           <Articles />
         </Box>
       </Box>

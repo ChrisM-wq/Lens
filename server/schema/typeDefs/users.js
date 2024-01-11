@@ -6,6 +6,7 @@ type User {
     password: String,
     token: String
     avatar: String
+    _id: ID
 }
 
 input RegisterInput {
@@ -31,6 +32,7 @@ input LoginInput {
 type Query {
     getAllUsers: [User]
     getUser(id: ID): User
+    validateUser: User
 }
 
 type Mutation {

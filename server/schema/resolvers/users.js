@@ -76,10 +76,12 @@ module.exports = {
         
                 user.token = token;
                 console.log(token);
+
+                // Example of setting a cookie with HttpOnly and Secure flags
+                
                 console.log(`Login request: ${user.email}`.yellow);
                 // Save our user in MongoDB
                 const res = await user.save();
-                
                 return {
                     id: res._id,
                     ...res._doc,
@@ -206,6 +208,7 @@ module.exports = {
             };
 
         },
+        
     },
     Query: {
         getAllUsers: async () => await User.find(),
@@ -215,6 +218,15 @@ module.exports = {
             //console.log(user);
 
             return user;
+        },
+        validateUser: async (_, { args }, context) => {
+          const decodedToken = jwt.verify(context.token.split(' ')[1], process.env.JWT_SECRET);
+          const user_id = decodedToken.user_id;
+          const res = await User.findById(user_id);
+          return {
+            id: res._id,
+            ...res._doc
+          };
         },
     },
 }
