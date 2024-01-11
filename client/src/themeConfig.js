@@ -136,6 +136,15 @@ const theme = createTheme({
           },
         },
         {
+          props: { variant: "options" },
+          style: {
+            color: "#6b6b6b",
+            fontSize: "14px",
+            fontFamily: 'sans-serif',
+            transition: 'ease 0.4s',
+          },
+        },
+        {
           props: { variant: "overline" },
           style: {
             color: "black",

@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { logout } from '../redux/authReducers';
 import Cookies from 'js-cookie';
+import UserOptions from './navigation/UserOptions';
 const LoggedInNavbar = () => {
 
   const user = useSelector((state) => state.auth.user);
@@ -23,20 +24,14 @@ const LoggedInNavbar = () => {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
-  const dispatch = useDispatch();
-  const handleLogout = async () => {
-    try {
-      // logout function for backend
-      Cookies.remove('authenticated');
-      Cookies.remove('jwt');
-      dispatch(logout());
-    } catch (error) {
-      console.log(error)
-    }
+
+
+
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  const handleAvatarClick = () => {
+    setDropdownOpen(!isDropdownOpen);
   };
-
-
-
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,6 +46,7 @@ const LoggedInNavbar = () => {
       setPrevScrollPos(currentScrollPos);
     };
     window.addEventListener('scroll', handleScroll);
+    setDropdownOpen(false);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -109,7 +105,8 @@ const LoggedInNavbar = () => {
               >
               <NotificationsOutlinedIcon sx={{ color: '#6b6b6b' }}/>
             </Link>
-            <Avatar alt="Remy Sharp" src={user.avatar} sx={{ width: 32, height: 32 }} onClick={handleLogout}/>
+            <Avatar alt="avatar" src={user.avatar} sx={{ width: 32, height: 32 }} onClick={handleAvatarClick}/>
+            {isDropdownOpen && <UserOptions />}
           </Box>
         </Toolbar>
       </AppBar>
