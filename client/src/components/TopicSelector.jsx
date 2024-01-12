@@ -9,7 +9,7 @@ export default function TopicSelector({ isVisible }) {
   const [tab, setTab] = useState('For you')
 
   return (
-    <Box sx={{ width: '100%', position: 'sticky', top: isVisible ? '58px' : '0', paddingTop: '16px', zIndex: 10, backgroundColor: '#fff', transition: 'linear 0.1s', mb: 8 }}>
+    <Box sx={{ width: '100%', position: 'sticky', top: isVisible ? '58px' : '0', paddingTop: isVisible ? '32px' : '16px', zIndex: 10, backgroundColor: '#fff', transition: 'linear 0.1s', mb: isVisible ? 2 : 5}}>
       <Box sx={{ display: 'flex', gap: 3}}>
         <AddIcon sx={{ color: '#6b6b6b', paddingBottom: '16px', fontSize: '16px' }} />
         <Typography variant='topic' onClick={() => setTab('For you')} sx={{ borderBottom: tab === 'For you' && '1px solid #242021', color: tab === 'For you' && '#242021'}}>For you</Typography>

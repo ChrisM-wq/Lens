@@ -6,26 +6,20 @@ import Typography from '@mui/material/Typography';
 import Logo from '../assets/LensLogoBlack.png';
 import { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
-import person from '../assets/person1.png';
 import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
-import { Collapse, InputBase } from '@mui/material';
+import { InputBase } from '@mui/material';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
 import CreateOutlinedIcon from '@mui/icons-material/CreateOutlined';
-import { useDispatch, useSelector } from 'react-redux';
-
-import { logout } from '../redux/authReducers';
-import Cookies from 'js-cookie';
+import { useSelector } from 'react-redux';
 import UserOptions from './navigation/UserOptions';
+
 const LoggedInNavbar = () => {
 
   const user = useSelector((state) => state.auth.user);
   console.log(user)
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
-
-
-
 
   const [isDropdownOpen, setDropdownOpen] = useState(false);
 

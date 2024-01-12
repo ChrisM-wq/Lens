@@ -39,7 +39,7 @@ const theme = createTheme({
         {
           props: { variant: "h3" },
           style: {
-            color: "black",
+            color: black,
             fontWeight: 600,
             fontSize: "48px",
             
@@ -73,7 +73,7 @@ const theme = createTheme({
         {
           props: { variant: "subtitle1" },
           style: {
-            color: "black",
+            color: black,
             fontWeight: 400,
             fontSize: "16px",
           },
@@ -81,8 +81,8 @@ const theme = createTheme({
         {
           props: { variant: "subtitle2" },
           style: {
-            color: "black",
-            fontWeight: 500,
+            color: black,
+            fontWeight: 400,
             fontSize: "14px",
           },
         },

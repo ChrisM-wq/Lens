@@ -1,5 +1,6 @@
 import { Box, Button, Divider, List, ListItem, Typography } from "@mui/material";
 import { useState, useEffect, useRef } from 'react';
+import { Link } from "react-router-dom";
 const Discover = () => {
 
   const buttonStyles = {
@@ -31,7 +32,7 @@ const Discover = () => {
           <Button sx={buttonStyles}>Politics</Button>
    
       </Box>
-      <Typography variant="caption" sx={{ color: 'secondary.main'}}>See more topics</Typography>
+      <Link to={'/explore-topics'} variant="caption" sx={{ color: 'secondary.main'}}>See more topics</Link>
       <Divider />
       <Box sx={{ display: 'flex', flexDirection: 'row', gap: 3, flexWrap: 'wrap'}}>
         <Typography variant="caption">Help</Typography>

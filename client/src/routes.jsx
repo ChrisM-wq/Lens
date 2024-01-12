@@ -7,6 +7,7 @@ import ArticlesPage from './pages/ArticlesPage';
 import Profile from './pages/Profile';
 import { useSelector } from 'react-redux';
 import SignIn from './pages/default/SignIn';
+import ExploreTopics from './pages/ExploreTopics';
 
 const RoutesConfig = () => {
 
@@ -17,6 +18,7 @@ const RoutesConfig = () => {
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
         {isAuthenticated && <Route path="write" element={<CreatePost />} /> }
+        {isAuthenticated && <Route path="explore-topics" element={<ExploreTopics />} /> }
         <Route path="article/:articleId" element={<ArticlesPage />} />
         <Route path="profile" element={<Profile />} />
         {!isAuthenticated && <Route path="/signin" element={<SignIn to="/" />} />}
