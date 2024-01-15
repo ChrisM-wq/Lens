@@ -1,9 +1,11 @@
 const users = require('./users');
 const articles = require('./articles');
+const topics = require('./topics');
 
 const typeDefs = [
   users,
-  articles
+  articles,
+  topics,
 ];
 
 module.exports = typeDefs;

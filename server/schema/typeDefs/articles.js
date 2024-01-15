@@ -3,12 +3,13 @@ scalar DateTime
 
 type Article {
   _id: ID!
-  user_id: ID!
+  user_id: UserTrending
   published: DateTime!
   title: String!
   caption: String!
   article: String!
   image: String!
+  tags: [String]
 }
 
 type ArticleShowcase {
@@ -37,6 +38,7 @@ extend type Query {
   getArticles: [ArticleShowcase]
   getTrendingArticles: [ArticleTrending]
   getArticleById(articleId: ID!): Article
+  searchArticlesByTopic(topic: String!): [Article]
 }
 
 extend type Mutation {

@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Logo from '../assets/LensLogoBlack.png';
 import { useEffect, useState } from 'react';
 import Avatar from '@mui/material/Avatar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import { InputBase } from '@mui/material';
 import NotificationsOutlinedIcon from '@mui/icons-material/NotificationsOutlined';
@@ -16,8 +16,25 @@ import UserOptions from './navigation/UserOptions';
 
 const LoggedInNavbar = () => {
 
+  const [searchQuery, setSearchQuery] = useState('');
+  const navigate = useNavigate();
+
+  const handleInputChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  const handleEnterKeyDown = (event) => {
+    if (event.key === 'Enter' && searchQuery.trim() !== '') {
+      // Navigate to the search results page with the search query
+      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
+    }
+  };
+
+
+
+
+
   const user = useSelector((state) => state.auth.user);
-  console.log(user)
   const [prevScrollPos, setPrevScrollPos] = useState(0);
   const [isVisible, setIsVisible] = useState(true);
 
@@ -55,13 +72,16 @@ const LoggedInNavbar = () => {
               <img src={Logo} width={'40px'}/>
             </Link>
             <Box sx={{ width: '240px', height: '40px', backgroundColor: '#F9F9F9', borderRadius: '50px', display: 'flex', alignItems: 'center', px: 2, justifyContent: 'center'}}>
-              <SearchIcon sx={{ color: '#6b6b6b', mr: 1, my: 0.5 }} />
-              <InputBase
-                sx={{ ml: 1, flex: 1, height: '40px', color: '#6b6b6b', fontSize: '14px' }}
-                placeholder="Search"
-                inputProps={{ 'aria-label': 'Search' }}
-              />
-            </Box>
+      <SearchIcon sx={{ color: '#6b6b6b', mr: 1, my: 0.5 }} />
+      <InputBase
+        sx={{ ml: 1, flex: 1, height: '40px', color: '#6b6b6b', fontSize: '14px' }}
+        placeholder="Search"
+        inputProps={{ 'aria-label': 'Search' }}
+        value={searchQuery}
+        onChange={handleInputChange}
+        onKeyDown={handleEnterKeyDown}
+      />
+    </Box>
           </Box>
           <Box sx={{ display: 'flex', gap: 4, alignItems: 'center'}}>
 

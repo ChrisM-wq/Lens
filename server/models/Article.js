@@ -24,6 +24,9 @@ const articleSchema = new mongoose.Schema({
   readtime: {
     type: Number
   },
+  tags: [{
+    type: String
+  }],
   comments: [{
     type: String
   }]

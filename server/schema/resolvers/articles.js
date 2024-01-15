@@ -56,5 +56,16 @@ module.exports = {
         throw new Error(error.message);
       }
     },
+    searchArticlesByTopic: async (_, { topic }) => {
+      console.log("Start search");
+      try {
+        const articles = await Article.find({ tags: { $in: [topic] } })
+          .populate('user_id', 'username avatar');
+        return articles;
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    },
   },
 };
